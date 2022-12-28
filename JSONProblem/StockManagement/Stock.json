@@ -1,0 +1,19 @@
+{
+  "stocksList": [
+    {
+      "StockName": "Amazon",
+      "shares": 4,
+      "Price": 100
+    },
+    {
+      "StockName": "Flipkart",
+      "shares": 5,
+      "Price": 70
+    },
+    {
+      "StockName": "TCS",
+      "shares": 2,
+      "Price": 50
+    }
+  ]
+}
