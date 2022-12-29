@@ -1,17 +1,17 @@
 [
   {
     "StockName": "Amazon",
-    "NoOfShares": 4,
+    "NoOfShares": 2,
     "StockPrice": 100
   },
   {
     "StockName": "Flipkart",
-    "NoOfShares": 5,
+    "NoOfShares": 2,
     "StockPrice": 70
   },
   {
     "StockName": "TCS",
-    "NoOfShares": 2,
+    "NoOfShares": 1,
     "StockPrice": 50
   }
 ]

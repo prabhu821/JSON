@@ -8,13 +8,8 @@ namespace JSONProblem.StockManagement
 {
     internal class Stock
     {
-        public List<Stocks> stocksList { get; set; }
-
-        public class Stocks
-        {
-            public string StockName { get; set; }
-            public int Shares { get; set; }
-            public int Price { get; set; }
-        }
+        public string StockName { get; set; }
+        public int StockPrice { get; set; }
+        public int NoOfShares { get; set; }
     }
 }

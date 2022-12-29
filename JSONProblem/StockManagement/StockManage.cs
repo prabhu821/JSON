@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,20 +9,26 @@ namespace JSONProblem.StockManagement
 {
     internal class StockManage
     {
-        int totalshare;
-        
-        //Display 
-        public void DisplayStocks(List<Stock.Stocks> stocksList)
+        List<Stock> stock = new List<Stock>(); 
+        List<Stock> customer = new List<Stock>(); 
+        public void ReadStockJsonFile(string file)
         {
-            Console.WriteLine("\nSTOCK DETAILS");
-            foreach (var i in stocksList)
+            var json=File.ReadAllText(file);
+            this.stock = JsonConvert.DeserializeObject<List<Stock>>(json);
+            foreach(var content in stock)
             {
-                Console.WriteLine("Stock name is: {0} \nStock share is: {1} \nStock Price : {2}", i.StockName, i.Shares, i.Price);
-                int temp = i.Shares * i.Price;
-                totalshare += temp;
-                Console.WriteLine("Total stock price for {0} : {1}", i.StockName, temp);
+                Console.WriteLine("Stock Name: "+content.StockName + "\nStock Price: " + content.StockPrice + "\nNo of Shares: " + content.NoOfShares);
             }
-            Console.WriteLine("\nTotal store : {0}", totalshare);
+        }
+
+        public void ReadCustomerJsonFile(string filePath)
+        {
+            var json = File.ReadAllText(filePath);
+            this.customer = JsonConvert.DeserializeObject<List<Stock>>(json);
+            foreach (var content in customer)
+            {
+                Console.WriteLine("Stock Name: " + content.StockName + "\nStock Price: " + content.StockPrice + "\nNo of Shares: " + content.NoOfShares);
+            }
         }
     }
 }

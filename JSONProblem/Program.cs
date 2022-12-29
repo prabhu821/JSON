@@ -10,22 +10,24 @@ namespace JSONProblem
         static void Main(string[] args)
         {
             StockManage stockManage = new StockManage();
-            string file = @"D:\OneDrive\Documents\BridgeLabz\JSON\JSONProblem\StockManagement\Stock.json";
+            string StockfilePath = @"D:\OneDrive\Documents\BridgeLabz\JSON\JSONProblem\StockManagement\Stock.json";
+            string CustomerfilePath = @"D:\OneDrive\Documents\BridgeLabz\JSON\JSONProblem\StockManagement\Customer.json";
 
             Console.WriteLine("Welcome to JSON Problem");
-            Stock stock = JsonConvert.DeserializeObject<Stock>(File.ReadAllText(file));
-            var fs = stock.stocksList;
             bool flag = true;
             while (flag)
             {
                 Console.WriteLine("\nStock Management");
-                Console.WriteLine("\nSelect the option \n1.Stock Data Management \n2.Exit");
+                Console.WriteLine("\nSelect the option \n1.Stock Data Management \n2.Customer Data Management \n3.Exit");
                 {
                     int choice = Convert.ToInt32(Console.ReadLine());
                     switch (choice)
                     {
                         case 1:
-                            stockManage.DisplayStocks(fs);
+                            stockManage.ReadStockJsonFile(StockfilePath);
+                            break;
+                        case 2:
+                            stockManage.ReadCustomerJsonFile(CustomerfilePath);
                             break;
                         default:
                             flag = false;
