@@ -1,17 +1,1 @@
-[
-  {
-    "StockName": "Amazon",
-    "NoOfShares": 4,
-    "StockPrice": 100
-  },
-  {
-    "StockName": "Flipkart",
-    "NoOfShares": 5,
-    "StockPrice": 70
-  },
-  {
-    "StockName": "TCS",
-    "NoOfShares": 2,
-    "StockPrice": 50
-  }
-]
+[{"StockName":"Amazon","StockPrice":100,"NoOfShares":2},{"StockName":"Flipkart","StockPrice":70,"NoOfShares":5},{"StockName":"TCS","StockPrice":50,"NoOfShares":4}]
