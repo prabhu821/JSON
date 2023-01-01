@@ -18,7 +18,8 @@ namespace JSONProblem
             while (flag)
             {
                 Console.WriteLine("\nStock Management");
-                Console.WriteLine("\nSelect the option \n1.Stock Data Management \n2.Customer Data Management \n3.Buy Stock \n4.Exit");
+                Console.WriteLine("\nSelect the option \n1.Stock Data Management \n2.Customer Data Management \n3.Buy Stock" +
+                    " \n4.Sell Stock \n5.Exit");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -32,6 +33,13 @@ namespace JSONProblem
                         Console.WriteLine("Enter name of the stock u want to buy");
                         string name=Console.ReadLine();
                         stockManage.BuyStock(name);
+                        stockManage.WriteToStockJsonFile(StockfilePath);
+                        stockManage.WriteToCustomerJsonFile(CustomerfilePath);
+                        break;
+                    case 4:
+                        Console.WriteLine("Enter name of the stock u want to sell");
+                        string stockName = Console.ReadLine();
+                        stockManage.SellStock(stockName);
                         stockManage.WriteToStockJsonFile(StockfilePath);
                         stockManage.WriteToCustomerJsonFile(CustomerfilePath);
                         break;

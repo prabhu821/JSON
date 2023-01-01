@@ -9,6 +9,7 @@ namespace JSONProblem.StockManagement
 {
     public class StockManage
     {
+        double amount = 1000, count = 0;
         List<Stock> stock = new List<Stock>(); 
         List<Stock> customer = new List<Stock>(); 
         public void ReadStockJsonFile(string filePath)
@@ -33,7 +34,6 @@ namespace JSONProblem.StockManagement
 
         public void BuyStock(string name)
         {
-            double amount = 1000, count = 0;
             Stock stocks;
             foreach(var data in stock)
             {
@@ -56,14 +56,11 @@ namespace JSONProblem.StockManagement
                         {
                             if (account.StockName.Equals(name))
                             {
+                                account.NoOfShares += noOfStocks;
                                 count++;
                             }
                         }
-                        if(count ==1)
-                        {
-                            data.NoOfShares += noOfStocks;
-                        }
-                        else 
+                        if(count ==0)
                         {
                             customer.Add(stock);
                         }
@@ -71,6 +68,33 @@ namespace JSONProblem.StockManagement
                 }
             }
         }
+        public void SellStock(string name)
+        {
+            foreach (var data in customer)
+            {
+                int count = 0;
+                if (data.StockName.Equals(name))
+                {
+                    Console.WriteLine("Available Amount :{0}", amount);
+                    Console.WriteLine("Enter the number of stocks you need to sell : ");
+                    int noOfStocks = Convert.ToInt32(Console.ReadLine());
+                    if (noOfStocks <= data.NoOfShares)
+                    {
+                        data.NoOfShares -= noOfStocks;
+                        amount += noOfStocks * data.StockPrice;
+                        foreach (var account in stock)
+                        {
+                            if (account.StockName.Equals(name))
+                            {
+                                data.NoOfShares -= noOfStocks;
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
         public void WriteToStockJsonFile(string filePath)
         {
             var json = JsonConvert.SerializeObject(stock);
